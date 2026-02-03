@@ -1,0 +1,359 @@
+.airport-wrapper {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Pricing Section */
+.airport-pricing {
+  padding: 80px 20px;
+  text-align: center;
+  background: #fff;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 40px auto 0;
+}
+
+.price-card {
+  background: #f8fafc;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.price-card h4 { color: #64748b; margin-bottom: 10px; }
+.price-card .price { font-size: 24px; font-weight: 800; color: #0f172a; }
+.price-card small { font-size: 10px; color: #94a3b8; }
+
+/* Booking Section with Image */
+.airport-booking-bg {
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?auto=format&fit=crop&q=80&w=1600') no-repeat center center/cover;
+  min-height: 600px;
+}
+
+.booking-overlay {
+  background: rgba(0, 0, 0, 0.6); /* Darkens the image so text is readable */
+  padding: 80px 20px;
+  height: 100%;
+}
+
+.booking-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.booking-text {
+  flex: 1;
+  color: white;
+  max-width: 500px;
+}
+
+.booking-text h1 { font-size: 48px; margin-bottom: 20px; font-weight: 800; }
+.trust-points { list-style: none; margin-top: 30px; }
+.trust-points li { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: #cbd5e1; }
+
+/* The White Card */
+.airport-form-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.call-badge {
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  background: #3b82f6;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.airport-submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: #ff7e20;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 800;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .booking-container { flex-direction: column; text-align: center; }
+  .booking-text h1 { font-size: 32px; }
+  .trust-points { display: none; }
+}
+/* Container for the background image section */
+.airport-hero {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?auto=format&fit=crop&q=80&w=1600') no-repeat center center/cover;
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+}
+
+.airport-hero-overlay {
+    background: linear-gradient(to right, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.4));
+    width: 100%;
+    height: 100%;
+    padding: 80px 0;
+}
+
+.airport-hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    gap: 40px;
+}
+
+/* White Card Styles */
+.airport-form-wrapper {
+    position: relative; /* Needed for the blue floating badge */
+    width: 100%;
+    max-width: 480px;
+}
+
+.airport-white-card {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.call-now-floating {
+    position: absolute;
+    top: -25px;
+    right: 20px;
+    background: #3b82f6; /* Professional Blue */
+    color: white;
+    padding: 10px 25px;
+    border-radius: 12px;
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.call-now-floating strong { display: block; font-size: 16px; }
+
+/* Form Field Layouts */
+.airport-booking-form label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.airport-booking-form input, 
+.airport-booking-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #f1f5f9;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.form-row-double {
+    display: flex;
+    gap: 15px;
+}
+
+.input-half { flex: 1; }
+
+.airport-submit-button {
+    width: 100%;
+    background: #ff7e20;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+/* Feature Icons Styling */
+.feature-icons-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #f1f5f9;
+    flex: 1;
+}
+
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    background: #fff7ed;
+    color: #ff7e20;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+/* AirportServices.css */
+
+.airport-hero-section {
+  position: relative;
+  /* Replace URL with your actual airport car image path */
+  background: url('./assets/airport.jpg') no-repeat center center/cover;
+  min-height: 600px;
+  width: 100%;
+}
+
+.airport-overlay {
+  background: rgba(0, 0, 0, 0.65); /* Darkens background for white card contrast */
+  padding: 80px 20px;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.airport-content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+/* Left Content Styles */
+.airport-hero-left {
+  flex: 1;
+  color: white;
+  max-width: 550px;
+}
+.airport-hero-content{
+    color: white;
+}
+.airport-hero-left h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.airport-hero-left p {
+  font-size: 1.1rem;
+  color: #e2e8f0;
+  margin-bottom: 30px;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.trust-icon { color: #ff7e20; }
+
+/* White Card Styles */
+.airport-card-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+}
+
+.airport-white-card {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.call-floating-badge {
+  position: absolute;
+  top: -25px;
+  right: 25px;
+  background: #3b82f6; /* Blue Badge */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Form Styling */
+.field-group label, .field-half label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.airport-mini-form input, .airport-mini-form select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #f1f5f9;
+  background: #f8fafc;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.field-row { display: flex; gap: 15px; }
+.field-half { flex: 1; }
+
+.airport-orange-btn {
+  width: 100%;
+  background: #ff7e20;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Responsive Fix */
+@media (max-width: 992px) {
+  .airport-content-container { flex-direction: column; text-align: center; }
+  .airport-hero-left h1 { font-size: 2.2rem; }
+  .hero-trust-list { display: none; }
+}
