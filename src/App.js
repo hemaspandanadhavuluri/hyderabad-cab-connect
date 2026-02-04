@@ -11,17 +11,27 @@ import hatchbackImg from './assets/hatchpack.avif';
 import sedanImg from './assets/sedan.jpg';
 import suvImg from './assets/suv.jpg';
 
-// Import local images for Hyderabad Trips (Replace with your paths)
-// import charminarImg from './assets/charminar.jpg';
-// import golcondaImg from './assets/golconda.jpg';
-
 import AirportServices from './AirportServices';
 import './App.css';
 
 const App = () => {
   const [pickup, setPickup] = useState('');
   const [destination, setDestination] = useState('');
+  const [travelDate, setTravelDate] = useState(''); // Added Date State
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Unified Handler for WhatsApp and SMS
+  const handleContact = (method) => {
+    const phoneNumber = "917981124094";
+    const message = `Hi Shiva Cab Connect, I want to book a ride:%0A📍 Pickup: ${pickup || 'Hyderabad'}%0A🏁 Destination: ${destination || 'Not specified'}%0A📅 Date: ${travelDate || 'Not specified'}%0APlease share the price details.`;
+
+    if (method === 'whatsapp') {
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    } else {
+      // Basic SMS link for mobile
+      window.location.href = `sms:+${phoneNumber}?body=${decodeURIComponent(message)}`;
+    }
+  };
 
   const intercityTrips = [
     { id: 1, city: 'Bangalore', image: bangaloreImg, desc: 'The Garden City - Safe and reliable intercity transfers.' },
@@ -38,15 +48,9 @@ const App = () => {
     { id: 3, place: 'Ramoji Film City', desc: 'Full day trip to the world\'s largest film studio.' },
     { id: 4, place: 'Birla Mandir & Hussain Sagar', desc: 'Evening tour of the white marble temple and lake.' }
   ];
-  const fleet = [
-    { type: 'Hatchback', desc: 'Compact cars perfect for 3-4 passengers', passengers: '4', bags: '2', price: '12', img: hatchbackImg },
-    { type: 'Sedan', desc: 'Comfortable cars for 4-5 passengers', passengers: '5', bags: '3', price: '15', img: sedanImg },
-    { type: 'SUV', desc: 'Spacious vehicles for groups', passengers: '7', bags: '5', price: '18', img: suvImg },
-  ];
 
   return (
     <div className="page-wrapper">
-      {/* Navigation Bar */}
       <nav className="navbar">
         <div className="logo">
           <span className="logo-main">Shiva </span>
@@ -72,7 +76,6 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Main Hero Section */}
       <section className="hero" id="home">
         <div className="hero-overlay"></div>
         <div className="hero-container">
@@ -110,25 +113,35 @@ const App = () => {
               </div>
               <div className="input-group">
                 <label>Travel Date</label>
-                <input type="date" className="date-input" />
+                <input 
+                  type="date" 
+                  className="date-input" 
+                  value={travelDate} 
+                  onChange={(e) => setTravelDate(e.target.value)} 
+                />
               </div>
-              <button type="submit" className="book-btn" onClick={() => window.location.href='tel:+919121067423'}>
-                <Car size={18} /> Get Approximate Price
-              </button>
+
+              {/* Updated Buttons - Shared the same .book-btn class to keep your CSS styling */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <button type="button" className="book-btn" style={{backgroundColor: '#25D366'}} onClick={() => handleContact('whatsapp')}>
+                   WhatsApp for Price
+                </button>
+                <button type="button" className="book-btn" onClick={() => handleContact('sms')}>
+                  <Car size={18} /> Get Price via SMS
+                </button>
+              </div>
             </form>
           </div>
         </div>
       </section>
-         {/* Airport Services Section (Hides Prices) */}
+
       <section id="services">
         <AirportServices />
       </section>
 
-      {/* Intercity Trips Section */}
       <section className="intercity-section" id="intercity">
         <div className="container">
           <h2 className="section-heading">Popular Intercity Drops</h2>
-          <p className="section-subtext">Direct one-way drops from Hyderabad to major cities.</p>
           <div className="trips-grid">
             {intercityTrips.map((trip) => (
               <div key={trip.id} className="trip-card">
@@ -139,7 +152,16 @@ const App = () => {
                 <div className="trip-details">
                   <h3>Hyderabad to {trip.city}</h3>
                   <p>{trip.desc}</p>
-                  <a href="tel:+919121067423" className="trip-cta-btn">Book Now <ArrowRight size={16} /></a>
+                  <button 
+                    className="trip-cta-btn" 
+                    style={{border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left'}}
+                    onClick={() => {
+                        setDestination(trip.city);
+                        window.scrollTo({top: 0, behavior: 'smooth'});
+                    }}
+                  >
+                    Select City <ArrowRight size={16} />
+                  </button>
                 </div>
               </div>
             ))}
@@ -147,9 +169,6 @@ const App = () => {
         </div>
       </section>
 
-   
-
-      {/* Hyderabad Special Places Section */}
       <section className="hyd-special-section" id="pricing">
         <div className="container">
           <h2 className="section-heading">Hyderabad Local Sightseeing</h2>
@@ -159,20 +178,17 @@ const App = () => {
                 <MapPin className="icon-orange" />
                 <h3>{trip.place}</h3>
                 <p>{trip.desc}</p>
-                <a href="tel:+919121067423" className="call-link">Call for Package</a>
+                <a href={`https://wa.me/919121067423?text=I%20want%20to%20know%20price%20for%20${trip.place}%20tour`} className="call-link">WhatsApp for Package</a>
               </div>
             ))}
           </div>
         </div>
       </section>
-    
 
-      {/* Contact / Outstation Info Section */}
       <section className="contact-footer" id="contact">
         <div className="container">
           <div className="footer-content">
             <h2>Ready to Start Your Journey?</h2>
-            <p>Available 24/7 for all cities in India and local Hyderabad needs.</p>
             <div className="contact-buttons">
               <a href="tel:+919121067423" className="footer-btn"><Phone size={20} /> +91 9121067423</a>
               <a href="https://wa.me/919121067423" className="footer-btn-wa">Chat on WhatsApp</a>
@@ -180,7 +196,6 @@ const App = () => {
           </div>
         </div>
       </section>
-      
     </div>
   );
 };
