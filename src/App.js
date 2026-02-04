@@ -53,8 +53,8 @@ const App = () => {
     <div className="page-wrapper">
       <nav className="navbar">
         <div className="logo">
-          <span className="logo-main">Shiva </span>
-          <span className="logo-accent">Cab Connect</span>
+          <span className="logo-main">Round The Clock </span>
+          <span className="logo-accent">Cabs</span>
         </div>
         
         <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
@@ -82,6 +82,7 @@ const App = () => {
           <div className="hero-content">
             <span className="badge">#1 Hyderabad Taxi Service</span>
             <h1 className="hero-title">Your Trusted Travel Partner</h1>
+            <h3 className="hero-subtitle"> By Shiva Tours and Travel</h3>
             <p className="hero-subtitle">
               Low-cost intercity drops, airport transfers, and local sightseeing. Experience comfort with 24/7 support.
             </p>
