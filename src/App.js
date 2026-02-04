@@ -22,7 +22,7 @@ const App = () => {
 
   // Unified Handler for WhatsApp and SMS
   const handleContact = (method) => {
-    const phoneNumber = "917981124094";
+    const phoneNumber = "919121067423";
     const message = `Hi Shiva Cab Connect, I want to book a ride:%0A📍 Pickup: ${pickup || 'Hyderabad'}%0A🏁 Destination: ${destination || 'Not specified'}%0A📅 Date: ${travelDate || 'Not specified'}%0APlease share the price details.`;
 
     if (method === 'whatsapp') {
