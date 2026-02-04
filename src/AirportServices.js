@@ -6,7 +6,24 @@ import airportImg from './assets/airport.png';
 const AirportServices = () => {
   return (
     <div className="airport-wrapper">
-
+               {/* Feature Icons Section */}
+      <section className="feature-icons-section">
+        <div className="feature-card">
+          <div className="icon-circle"><ShieldCheck size={24} /></div>
+          <h3>Meet & Greet</h3>
+          <p>Experience a warm welcome at the arrival hall. Our drivers will be waiting with a personalized name card.</p>
+        </div>
+        <div className="feature-card">
+          <div className="icon-circle"><Plane size={24} /></div>
+          <h3>Flight Tracking</h3>
+          <p>We monitor your flight in real-time to adjust pickup times accordingly at no extra cost.</p>
+        </div>
+        <div className="feature-card">
+          <div className="icon-circle"><Clock size={24} /></div>
+          <h3>Punctual Pickup</h3>
+          <p>Timeliness is our hallmark. We guarantee on-time pickups for airport drops ensuring you never miss a flight.</p>
+        </div>
+      </section>
       {/* Hero Booking Section with Background Image */}
       <section className="airport-hero" style={{ backgroundImage: `url(${airportImg})` }}>
         <div className="airport-hero-overlay">
@@ -61,24 +78,7 @@ const AirportServices = () => {
           </div>
         </div>
       </section>
-        {/* Feature Icons Section */}
-      <section className="feature-icons-section">
-        <div className="feature-card">
-          <div className="icon-circle"><ShieldCheck size={24} /></div>
-          <h3>Meet & Greet</h3>
-          <p>Experience a warm welcome at the arrival hall. Our drivers will be waiting with a personalized name card.</p>
-        </div>
-        <div className="feature-card">
-          <div className="icon-circle"><Plane size={24} /></div>
-          <h3>Flight Tracking</h3>
-          <p>We monitor your flight in real-time to adjust pickup times accordingly at no extra cost.</p>
-        </div>
-        <div className="feature-card">
-          <div className="icon-circle"><Clock size={24} /></div>
-          <h3>Punctual Pickup</h3>
-          <p>Timeliness is our hallmark. We guarantee on-time pickups for airport drops ensuring you never miss a flight.</p>
-        </div>
-      </section>
+ 
     </div>
   );
 };

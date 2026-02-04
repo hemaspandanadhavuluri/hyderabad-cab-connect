@@ -119,6 +119,10 @@ const App = () => {
           </div>
         </div>
       </section>
+         {/* Airport Services Section (Hides Prices) */}
+      <section id="services">
+        <AirportServices />
+      </section>
 
       {/* Intercity Trips Section */}
       <section className="intercity-section" id="intercity">
@@ -143,10 +147,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* Airport Services Section (Hides Prices) */}
-      <section id="services">
-        <AirportServices />
-      </section>
+   
 
       {/* Hyderabad Special Places Section */}
       <section className="hyd-special-section" id="pricing">
@@ -164,27 +165,7 @@ const App = () => {
           </div>
         </div>
       </section>
-      {/* NEW: Our Fleet Section */}
-      <section className="fleet-section">
-        <div className="container text-center">
-          <h2>Our Fleet</h2>
-          <p className="subtitle">Choose from our range of comfortable vehicles</p>
-          <div className="fleet-grid">
-            {fleet.map((car, index) => (
-              <div key={index} className="fleet-card">
-                <img src={car.img} alt={car.type} className="fleet-img" />
-                <h3>{car.type}</h3>
-                <p className="fleet-desc">{car.desc}</p>
-                <div className="fleet-specs">
-                  <span><Users size={16}/> Max {car.passengers} passengers</span>
-                  <span><Briefcase size={16}/> {car.bags} medium bags</span>
-                  <span className="fleet-price"><strong>Rs ₹{car.price}</strong>/km</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    
 
       {/* Contact / Outstation Info Section */}
       <section className="contact-footer" id="contact">
