@@ -53,7 +53,7 @@ const App = () => {
     <div className="page-wrapper">
       <nav className="navbar">
         <div className="logo">
-          <span className="logo-main">Round The Clock </span>
+          <span className="logo-main">UB </span>
           <span className="logo-accent">Cabs</span>
         </div>
         
