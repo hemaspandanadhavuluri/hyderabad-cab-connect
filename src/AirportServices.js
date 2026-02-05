@@ -74,7 +74,7 @@ const AirportServices = () => {
               </div>
               
               <div className="airport-white-card">
-                <h3>Book My Airport Ride</h3>
+                <h3 style={{paddingBottom:'15px'}}>Book My Airport Ride</h3>
                 <form className="airport-booking-form" onSubmit={(e) => e.preventDefault()}>
                   <div className="form-row-single">
                     <label>PICKUP LOCATION</label>

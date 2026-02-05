@@ -858,3 +858,47 @@ html, body {
     max-width: 400px;
   }
 }
+.navbar-logo {
+  height: 100px;      /* Adjust height to fit your navbar design */
+  width: auto;       /* Maintains aspect ratio */
+  display: block;
+  object-fit: contain;
+}
+
+/* Optional: Add space around the logo container */
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+/* Update your CSS for the Intercity CTA */
+.trip-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the text since there's no price */
+  gap: 10px;
+  width: 100%;
+  padding: 14px 20px;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+/* Format: x-offset y-offset blur spread color */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), 
+              inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  
+  transition: all 0.3s ease;
+}
+
+.trip-cta-btn:hover {
+  transform: translateY(-3px); /* Lifts the button slightly on hover */
+  background-color: rgba(255, 255, 255, 0.5); /* Brightens slightly */
+  
+  /* Stronger shadow on hover to mimic it moving further from the surface */
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+}

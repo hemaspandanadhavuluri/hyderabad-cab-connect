@@ -1,37 +1,41 @@
 import React, { useState } from 'react';
-import { Phone, Calendar, MapPin, ShieldCheck, Banknote, Car, Headphones, Menu, X, ArrowRight, Plane, Clock, Shield } from 'lucide-react';
+import { Phone, Calendar, MapPin, ShieldCheck, Banknote, Car, Headphones, Menu, X, ArrowRight, Plane, Clock, Shield, Instagram, Youtube, Facebook } from 'lucide-react';
 import bangaloreImg from './assets/bangalore.jpg';
 import vijayawadaImg from './assets/vijayawada.jpeg';
 import mumbaiImg from './assets/mumbai.jpeg';
 import vizagImg from './assets/vizag.jpeg';
 import gunturImg from './assets/guntur.jpeg';
 import rajahmundryImg from './assets/rajahmundry.jpeg';
-import { Users, Briefcase, Gauge } from 'lucide-react';
-import hatchbackImg from './assets/hatchpack.avif';
-import sedanImg from './assets/sedan.jpg';
-import suvImg from './assets/suv.jpg';
-
+import { HelmetProvider } from 'react-helmet-async';
+import SEO from './SEO';
 import AirportServices from './AirportServices';
 import './App.css';
+import logo from './assets/logo.jpeg';
+
 
 const App = () => {
   const [pickup, setPickup] = useState('');
   const [destination, setDestination] = useState('');
   const [travelDate, setTravelDate] = useState(''); // Added Date State
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+const handleContact = (method, selectedDestination = '') => {
+  const phoneNumber = "919121067423";
+  
+  // Use the city from the card if provided, otherwise fallback to the input state
+  const finalDest = selectedDestination || destination || 'Not specified';
+  const startLoc = pickup || 'Hyderabad';
+  const date = travelDate || 'Not specified';
+  
+  const message = `Hi UBCabs, I'd like to check the price for a trip:%0A📍 Pickup: ${startLoc}%0A🏁 Destination: ${finalDest}%0A📅 Date: ${date}%0A%0APlease share the best fare for Sedan and SUV.`;
 
-  // Unified Handler for WhatsApp and SMS
-  const handleContact = (method) => {
-    const phoneNumber = "919121067423";
-    const message = `Hi Shiva Cab Connect, I want to book a ride:%0A📍 Pickup: ${pickup || 'Hyderabad'}%0A🏁 Destination: ${destination || 'Not specified'}%0A📅 Date: ${travelDate || 'Not specified'}%0APlease share the price details.`;
-
-    if (method === 'whatsapp') {
-      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-    } else {
-      // Basic SMS link for mobile
-      window.location.href = `sms:+${phoneNumber}?body=${decodeURIComponent(message)}`;
-    }
-  };
+  if (method === 'whatsapp') {
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  } else {
+    const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    const separator = isIOS ? '&' : '?';
+    window.location.href = `sms:+${phoneNumber}${separator}body=${decodeURIComponent(message)}`;
+  }
+};
 
   const intercityTrips = [
     { id: 1, city: 'Bangalore', image: bangaloreImg, desc: 'The Garden City - Safe and reliable intercity transfers.' },
@@ -50,9 +54,17 @@ const App = () => {
   ];
 
   return (
-    <div className="page-wrapper">
+    <HelmetProvider>
+      <div className="app-container">
+        <SEO 
+          title="UBCabs | Hyderabad Airport Taxi & Outstation Cabs"
+          description="Book affordable cabs in Hyderabad. 24/7 Airport pickup/drop, outstation trips to Guntur & Vijayawada by Shiva Tours and Travels."
+          path="/"
+        />
+<div className="page-wrapper">
       <nav className="navbar">
         <div className="logo">
+          <img src={logo} alt="UBCabs Logo" className="navbar-logo" />
           <span className="logo-main">UB </span>
           <span className="logo-accent">Cabs</span>
         </div>
@@ -144,28 +156,40 @@ const App = () => {
         <div className="container">
           <h2 className="section-heading">Popular Intercity Drops</h2>
           <div className="trips-grid">
-            {intercityTrips.map((trip) => (
-              <div key={trip.id} className="trip-card">
-                <div className="trip-image-container">
-                  <img src={trip.image} alt={trip.city} className="trip-image" />
-                  <div className="trip-overlay"><span className="trip-tag">Lowest Price</span></div>
-                </div>
-                <div className="trip-details">
-                  <h3>Hyderabad to {trip.city}</h3>
-                  <p>{trip.desc}</p>
-                  <button 
-                    className="trip-cta-btn" 
-                    style={{border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left'}}
-                    onClick={() => {
-                        setDestination(trip.city);
-                        window.scrollTo({top: 0, behavior: 'smooth'});
-                    }}
-                  >
-                    Select City <ArrowRight size={16} />
-                  </button>
-                </div>
-              </div>
-            ))}
+           {intercityTrips.map((trip) => (
+  <div key={trip.id} className="trip-card">
+    <div className="trip-image-container">
+      <img src={trip.image} alt={trip.city} className="trip-image" />
+      <div className="trip-overlay"><span className="trip-tag">Lowest Price</span></div>
+    </div>
+    <div className="trip-details">
+      <h3>Hyderabad to {trip.city}</h3>
+      <p>{trip.desc}</p>
+      
+      {/* Updated Button Logic */}
+      <button 
+        className="trip-cta-btn" 
+        style={{
+          border: 'none', 
+          cursor: 'pointer', 
+          width: '100%', 
+          height: '50px', 
+          textAlign: 'center', 
+          borderRadius: '8px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'rgba(255, 255, 255, 0.4)', // Transparent style you asked for
+          boxShadow: '0 4px 15px rgba(0,0,0,0.1)'      // Subtle shadow
+        }}
+        onClick={() => handleContact('whatsapp', trip.city)}
+      >
+        <p style={{ margin: '0', fontWeight: '700' }}>GET FARE</p>
+        <ArrowRight size={18} style={{ marginLeft: '10px' }} />
+      </button>
+    </div>
+  </div>
+))}
           </div>
         </div>
       </section>
@@ -186,18 +210,49 @@ const App = () => {
         </div>
       </section>
 
-      <section className="contact-footer" id="contact">
-        <div className="container">
-          <div className="footer-content">
-            <h2>Ready to Start Your Journey?</h2>
-            <div className="contact-buttons">
-              <a href="tel:+919121067423" className="footer-btn"><Phone size={20} /> +91 9121067423</a>
-              <a href="https://wa.me/919121067423" className="footer-btn-wa">Chat on WhatsApp</a>
-            </div>
-          </div>
+    <section className="contact-footer" id="contact">
+  <div className="container">
+    <div className="footer-content">
+      <h2>Ready to Start Your Journey?</h2>
+      
+      {/* Primary Contact Buttons */}
+      <div className="contact-buttons">
+        <a href="tel:+919121067423" className="footer-btn">
+          <Phone size={20} /> +91 9121067423
+        </a>
+        <a href="https://wa.me/919121067423" className="footer-btn-wa">
+          Chat on WhatsApp
+        </a>
+      </div>
+
+      {/* Social Media Section */}
+      <div className="social-links-container">
+        <p className="social-title">Follow UBCabs on Social Media</p>
+        <div className="social-icons">
+          <a href="https://www.instagram.com/ubcabs9121?igsh=MXZwYXFlNzQ4dWVweQ%3D%3D&utm_source=qr" 
+             target="_blank" rel="noopener noreferrer" className="social-icon instagram">
+            <Instagram size={24} />
+          </a>
+          <a href="https://www.facebook.com/share/173W5HQk7A/?mibextid=wwXIfr" 
+             target="_blank" rel="noopener noreferrer" className="social-icon facebook">
+            <Facebook size={24} />
+          </a>
+          <a href="https://youtube.com/@ubcabs?si=rgewkRvQWq2AAJRk" 
+             target="_blank" rel="noopener noreferrer" className="social-icon youtube">
+            <Youtube size={24} />
+          </a>
         </div>
-      </section>
+      </div>
+
+      <p className="copyright-text">© 2026 UB Cabs - Shiva Tours and Travels. All rights reserved.</p>
     </div>
+  </div>
+</section>
+      
+    </div>
+        </div>
+        </HelmetProvider>
+    
   );
 };
 
