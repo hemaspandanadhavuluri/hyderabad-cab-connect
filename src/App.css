@@ -859,7 +859,7 @@ html, body {
   }
 }
 .navbar-logo {
-  height: 100px;      /* Adjust height to fit your navbar design */
+  height: 50px;      /* Adjust height to fit your navbar design */
   width: auto;       /* Maintains aspect ratio */
   display: block;
   object-fit: contain;
